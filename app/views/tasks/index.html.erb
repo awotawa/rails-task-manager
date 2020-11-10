@@ -1,0 +1,13 @@
+<h1>Tasks</h1>
+<ul>
+  <% @tasks.each do |task| %>
+    <li class="d-flex">
+      <%= form_for task do |f| %> <%= f.check_box :completed %><% end %> <%= link_to "#{task.title}", task_path(task.id) %>
+       . <%= link_to "Delete",
+            task_path(task),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %></li>
+  <% end %>
+</ul>
+<hr>
+<%= link_to 'Create a new task', new_path %>
